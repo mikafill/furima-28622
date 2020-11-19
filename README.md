@@ -22,17 +22,17 @@
 
 ## items テーブル
 
-| Column           | Type     | Options     |
-| ---------------- | -------- | ------------|
-| name             | string   | null: false |
-| explanation      | text     | null: false |
-| categories_id    | integer  | null: false |
-| condition_id     | integer  | null: false |
-| fee_type_id      | integer  | null: false |
-| delivery_area_id | integer  | null: false |
-| delivery_days_id | integer  | null: false |
-| price            | integer  | null: false |
-| user_id          | integer  | null: false |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| explanation      | text       | null: false                    |
+| categories_id    | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| fee_type_id      | integer    | null: false                    |
+| delivery_area_id | integer    | null: false                    |
+| delivery_days_id | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| user             | reference  | null: false, foreign_key: true |
 
 ### association
 
@@ -42,10 +42,10 @@
 
 ## purchase テーブル
 
-| Column          | Type     | Options     |
-| --------------- | -------- | ------------|
-| item_id         | integer  | null: false |
-| user_id         | integer  | null: false |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| item            | reference  | null: false, foreign_key: true |
+| user            | reference  | null: false, foreign_key: true |
 
 ### association
 
@@ -56,15 +56,15 @@
 
 ## buyer_address テーブル
 
-| Column           | Type     | Options     |
-| ---------------- | -------- | ------------|
-| postal_code      | string   | null: false |
-| prefecture_id    | integer  | null: false |
-| city             | string   | null: false |
-| house_number     | string   | null: false |
-| building_name    | string   | null: false |
-| tel              | string   | null: false |
-| purchase_id      | integer  | null: false |
+| Column           | Type       | Options                          |
+| ---------------- | ---------- | -------------------------------- |
+| postal_code      | string     | null: false                      |
+| prefecture_id    | integer    | null: false                      |
+| city             | string     | null: false                      |
+| house_number     | string     | null: false                      |
+| building_name    | string     |                                  |
+| tel              | string     | null: false                      |
+| purchase         | reference  | null: false, foreign_key: true   |
 
 
 ### association
