@@ -6,10 +6,9 @@ class User < ApplicationRecord
 
   with_options presence: {message: "必須項目です"} do
     validates :nickname
-    validates :email, uniqueness: true, inclusion: {in: "@", message: "有効なメールアドレスを入力してください"}
+    validates :email, uniqueness: {message: "すでに使用されているアドレスです"}, inclusion: {in: "@", message: "有効なメールアドレスを入力してください"}
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
-    validates :encrypted_password, length: {minimum: 6, message: "6文字以上で入力してください"}, format: {with: PASSWORD_REGEX message: "半角英数字で入力してください"}, confirmation: true
-    validates :encrypted_password_confirmation {message: "パスワードが異なります"}
+    validates :encrypted_password, length: {minimum: 6, message: "6文字以上で入力してください"}, format: {with: PASSWORD_REGEX, message: "半角英数字で入力してください"}, confirmation: true
     validates :birthday
   end
 
@@ -22,4 +21,5 @@ class User < ApplicationRecord
     validates :kana_first_name
     validates :kana_last_name
   end
+
 end
