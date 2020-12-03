@@ -12,7 +12,7 @@ class User < ApplicationRecord
     validates :birthday
   end
 
-  with_options presence: {message: "必須項目です"}, format: {with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "全角で入力してください"}  do
+  with_options presence: {message: "必須項目です"}, format: {with: /\A[ぁ-んーァ-ン一-龥]+\z/, message: "全角で入力してください"}  do
     validates :first_name
     validates :last_name
   end
