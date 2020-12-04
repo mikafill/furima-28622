@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   with_options presence: { message: '必須項目です' } do
     validates :nickname
-    validates :email, uniqueness: { message: 'すでに使用されているアドレスです' }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: '有効なメールアドレスを入力してください' }
+    validates :email, uniqueness: { message: 'すでに使用されているアドレスです' }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: '@を含む有効なメールアドレスを入力してください' }
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
     validates :password, length: { minimum: 6, message: '6文字以上で入力してください' }, format: { with: PASSWORD_REGEX, message: '半角英数字で入力してください' }, confirmation: true
     validates :birthday
