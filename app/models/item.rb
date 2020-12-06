@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  has_one_attached :image
 
   with_options presece: { message: '必須項目です'} do
     validates :name
