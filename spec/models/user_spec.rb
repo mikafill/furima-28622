@@ -123,10 +123,22 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Kana first name カタカナで入力してください')
       end
 
+      it 'kana_first_nameが半角英数だけでは登録できない' do
+        @user.kana_first_name = 'aaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Kana first name カタカナで入力してください')
+      end
+
       it 'kana_last_nameが空では登録できない' do
         @user.kana_last_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include('Kana last name 必須項目です')
+      end
+
+      it 'kana_last_nameが半角英数だけでは登録できない' do
+        @user.kana_last_name = 'aaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Kana last name カタカナで入力してください')
       end
 
       it 'kana_last_nameがカタカナでないと登録できない' do
