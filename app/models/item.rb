@@ -1,4 +1,10 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :delivery_area
+  belongs_to :delivery_day
+  belongs_to :fee_type
   has_one_attached :image
   belongs_to :user
 
@@ -21,6 +27,6 @@ class Item < ApplicationRecord
     validates :delivery_day_id
   end
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
+
 
 end
