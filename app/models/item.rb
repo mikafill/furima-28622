@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to :user
 
   with_options presence: { message: '必須項目です'} do
+    validates :image
     validates :name
     validates :explaination
     validates :category_id
