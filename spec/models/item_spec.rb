@@ -14,7 +14,6 @@ RSpec.describe Item, type: :model do
     end
 
     context '登録できない時' do
-
       it 'imageが空では登録できない' do
         @item.image = nil
         @item.valid?
@@ -22,23 +21,23 @@ RSpec.describe Item, type: :model do
       end
 
       it 'nameが空では登録できない' do
-        @item.name = ""
+        @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include('Name 必須項目です')
       end
 
       it 'explainationが空では登録できない' do
-        @item.explaination = ""
+        @item.explaination = ''
         @item.valid?
         expect(@item.errors.full_messages).to include('Explaination 必須項目です')
       end
 
       it 'category_id選択されていなければ登録できない' do
-        @item.category_id  = 1
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category 選択されていません')
       end
-      
+
       it 'condition_id選択されていなければ登録できない' do
         @item.condition_id = 1
         @item.valid?
@@ -64,13 +63,13 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが空では登録できない' do
-        @item.price = ""
+        @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include('Price 必須項目です')
       end
 
       it 'priceは半角数字でないと登録できない' do
-        @item.price = "aaa"
+        @item.price = 'aaa'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price 半角数字で入力してください')
       end
