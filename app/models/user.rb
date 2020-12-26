@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :items
+
   with_options presence: { message: '必須項目です' } do
     validates :nickname
     validates :email, uniqueness: { message: 'すでに使用されているアドレスです' }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: '@を含む有効なメールアドレスを入力してください' }
